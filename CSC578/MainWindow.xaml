@@ -16,7 +16,7 @@
                     <Rectangle Fill="#FFF4F4F5" Height="200" Margin="98,124,96,0" Stroke="Black" VerticalAlignment="Top"/>
                     <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="98,383,0,0" Stroke="Black" VerticalAlignment="Top" Width="600"/>
                     <Button x:Name="settingButton" Content="Settings" HorizontalAlignment="Left" Margin="18,40,0,0" VerticalAlignment="Top" Width="50" Height="50"/>
-                    <Button x:Name="addButton" Content="Add Item" HorizontalAlignment="Left" Margin="86,48,0,0" VerticalAlignment="Top" Width="125" Height="35"/>
+                    <Button x:Name="addButton" Content="Add Item" HorizontalAlignment="Left" Margin="86,48,0,0" VerticalAlignment="Top" Width="125" Height="35" Click="addButton_Click"/>
                     <DatePicker HorizontalAlignment="Left" Margin="491,55,0,0" VerticalAlignment="Top"/>
                     <TextBlock x:Name="textBlock" Margin="357,59,357,0" TextWrapping="Wrap" Text="Displayed Date" VerticalAlignment="Top"/>
                     <Button x:Name="leftButton" Content="L" HorizontalAlignment="Left" Margin="320,53,0,0" VerticalAlignment="Top" Width="25" Height="25"/>
