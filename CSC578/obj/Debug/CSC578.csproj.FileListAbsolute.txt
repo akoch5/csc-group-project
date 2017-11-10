@@ -28,3 +28,11 @@ C:\Users\admin\Documents\csc-group-project\CSC578\obj\Debug\CSC578.Properties.Re
 C:\Users\admin\Documents\csc-group-project\CSC578\obj\Debug\CSC578.csproj.GenerateResource.Cache
 C:\Users\admin\Documents\csc-group-project\CSC578\bin\Debug\Database.accdb
 C:\Users\admin\Documents\csc-group-project\CSC578\obj\Debug\CSC578_Content.g.cs
+C:\Users\admin\Documents\csc-group-project\CSC578\obj\Debug\addTaskWindow.g.cs
+C:\Users\admin\Documents\csc-group-project\CSC578\obj\Debug\addTaskWindow.baml
+C:\Users\admin\Documents\csc-group-project\CSC578\obj\Debug\EmployeeList.g.cs
+C:\Users\admin\Documents\csc-group-project\CSC578\obj\Debug\Settings.g.cs
+C:\Users\admin\Documents\csc-group-project\CSC578\obj\Debug\TaskList.g.cs
+C:\Users\admin\Documents\csc-group-project\CSC578\obj\Debug\EmployeeList.baml
+C:\Users\admin\Documents\csc-group-project\CSC578\obj\Debug\Settings.baml
+C:\Users\admin\Documents\csc-group-project\CSC578\obj\Debug\TaskList.baml

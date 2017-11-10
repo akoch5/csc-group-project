@@ -29,12 +29,15 @@ namespace CSC578
         {
             InitializeComponent();
             con = new OleDbConnection();
+            //Need to change the Data Source to match wherever the DB is stored on local machine.
+            // In final version, should check to see if DB exists in a specific folder. If not, create folder and add DB to make it consistent across all machines. 
             con.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\admin\\Documents\\csc-group-project\\Database.accdb";
 
         }
 
 
 
+        //Enter SQL command as paramter to edit DB. 
         private void addData(String command)
         {
             OleDbCommand cmd = new OleDbCommand();
@@ -45,6 +48,18 @@ namespace CSC578
             cmd.ExecuteNonQuery();
             con.Close();
 
+        }
+
+        private void addButton_Click(object sender, RoutedEventArgs e)
+        {
+            addTaskWindow taskWindow = new addTaskWindow();
+            taskWindow.Show();
+        }
+
+        private void settingButton_Click(object sender, RoutedEventArgs e)
+        {
+            Settings settings = new Settings();
+            settings.Show();
         }
     }
 }
