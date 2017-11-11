@@ -23,7 +23,7 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Maintenance" Margin="-2,-2,-2,0">
-                <Grid Background="#FFE5E5E5" Margin="1,0,-1,0"/>
+                <local:Maintenance />
             </TabItem>
             <TabItem Header="Kitchen 2.0" Margin="-2,-2,-2,0">
                 <Grid Background="#FFE5E5E5" Margin="1,0,-1,0"/>
