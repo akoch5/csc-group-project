@@ -51,13 +51,14 @@
             </TabItem>
             <TabItem Header="Cleaning">
                 <Grid Background="#FFE5E5E5" Margin="1,0,-1,0">
-                    <Rectangle Fill="#FFF4F4F5" Height="200" Margin="98,124,96,0" Stroke="Black" VerticalAlignment="Top"/>
+                    <DataGrid x:Name="cleaningGrid" HorizontalAlignment="Left" Height="200" Margin="98,124,0,0" VerticalAlignment="Top" Width="600"/>
                     <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="98,383,0,0" Stroke="Black" VerticalAlignment="Top" Width="600"/>
                     <Button x:Name="settingButton" Content="Settings" HorizontalAlignment="Left" Margin="18,40,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="settingButton_Click"/>
                     <Button x:Name="addButton" Content="Add Item" HorizontalAlignment="Left" Margin="86,48,0,0" VerticalAlignment="Top" Width="125" Height="35" Click="addButton_Click"/>
                     <DatePicker HorizontalAlignment="Left" Margin="345,54,0,0" VerticalAlignment="Top" Width="103"/>
                     <Button x:Name="leftButton" Content="L" HorizontalAlignment="Left" Margin="315,53,0,0" VerticalAlignment="Top" Width="25" Height="25"/>
                     <Button x:Name="rightButton" Content="R" Margin="453,53,316,0" VerticalAlignment="Top" Height="25"/>
+
                 </Grid>
             </TabItem>
             <TabItem Header="Maintenance" Margin="-2,-2,-2,0">

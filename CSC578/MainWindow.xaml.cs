@@ -24,8 +24,8 @@ namespace CSC578
     /// </summary>
     public partial class MainWindow : Window
     {
-        OleDbConnection con;
-        DataTable dt;
+        public static OleDbConnection con;
+        public static DataTable dt;
 
         public MainWindow()
         {
@@ -34,13 +34,13 @@ namespace CSC578
             //Need to change the Data Source to match wherever the DB is stored on local machine.
             // In final version, should check to see if DB exists in a specific folder. If not, create folder and add DB to make it consistent across all machines. 
             con.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\admin\\Documents\\csc-group-project\\Database.accdb";
-
+            
         }
 
 
 
         //Enter SQL command as paramter to edit DB. 
-        private void addData(String command)
+        public static void editDB(String command)
         {
             OleDbCommand cmd = new OleDbCommand();
             if (con.State != ConnectionState.Open)
@@ -51,6 +51,7 @@ namespace CSC578
             con.Close();
 
         }
+
 
 
          //Food Tabbed Menu Action methods Start
@@ -83,6 +84,9 @@ namespace CSC578
 
         //Food Tabbed Menu Action methods End
 
+
+        //Cleaning Tab Menu Action methods Begin.
+
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
             addTaskWindow taskWindow = new addTaskWindow();
@@ -95,6 +99,23 @@ namespace CSC578
             settings.Show();
         }
 
+        //Will populate the grid with specific cleaning tasks. Still need to add table to database.  
+        public void populateCleaningGrid()
+        {
+            OleDbCommand cmd = new OleDbCommand();
+            if (con.State != ConnectionState.Open)
+                con.Open();
+            cmd.Connection = con;
+            cmd.CommandText = "select * from " ;
+            OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+            dt = new DataTable();
+            da.Fill(dt);
+            cleaningGrid.ItemsSource = dt.AsDataView();
+            con.Close();
+        }
+
+
+        //Cleaning Tab Menu Action methods end.
 
     }
 }

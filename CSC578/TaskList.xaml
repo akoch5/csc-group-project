@@ -12,10 +12,15 @@
             <RowDefinition Height="204*"/>
         </Grid.RowDefinitions>
         <Label x:Name="label" Content="Cleaning Tasks" Margin="90,14,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="99" FontWeight="Bold"/>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="125" Margin="40,60,0,0" VerticalAlignment="Top" Width="165" Grid.RowSpan="2"/>
-        <Button x:Name="btnAdd" Content="+" HorizontalAlignment="Left" Margin="228,5,0,0" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.25,0.25" Grid.Row="1"/>
-        <Button x:Name="btnDelete" Content="-" HorizontalAlignment="Left" Margin="228,42,0,0" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.25,0.25" Grid.Row="1"/>
-        <Button x:Name="btnOK" Content="OK" HorizontalAlignment="Left" Margin="97,150,0,0" VerticalAlignment="Top" Width="80" Grid.Row="1" Click="btnOK_Click"/>
+        <DataGrid x:Name="taskGrid" IsReadOnly="True" HorizontalAlignment="Left" Height="125" Margin="40,60,0,0" VerticalAlignment="Top" Width="165" Grid.RowSpan="2"/>
+        <Button x:Name="btnAdd" Content="+" HorizontalAlignment="Left" Margin="228,5,0,0" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.25,0.25" Grid.Row="1" Click="btnAdd_Click"/>
+        <Button x:Name="btnDelete" Content="-" HorizontalAlignment="Left" Margin="228,42,0,0" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.25,0.25" Grid.Row="1" Click="btnDelete_Click"/>
+        <Button x:Name="btnOK" Content="OK" HorizontalAlignment="Left" Margin="97,166,0,0" VerticalAlignment="Top" Width="80" Grid.Row="1" Click="btnOK_Click"/>
+        <Grid Name ="addGrid" HorizontalAlignment="Left" Height="25" Margin="35,125,0,0" Grid.Row="1" VerticalAlignment="Top" Width="165" Visibility="Hidden" >
+            <Label x:Name="newTasklbl" Content="Task Name: " FontSize="8" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,2,0,0"/>
+            <TextBox x:Name="newTasktxt" HorizontalAlignment="Left" Height="10" Margin="48,8,0,0" TextWrapping="Wrap" FontSize="8" VerticalAlignment="Top" Width="77"/>
+            <Button x:Name="btnAddOK" Content="ADD" FontSize="8" HorizontalAlignment="Left" Margin="133,5,0,0" VerticalAlignment="Top" Width="22" Click="btnAddOK_Click" />
+        </Grid>
 
     </Grid>
 </Window>
