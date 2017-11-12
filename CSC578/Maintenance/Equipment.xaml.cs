@@ -22,61 +22,61 @@ namespace CSC578.Maintenance
     /// </summary>
     public partial class Equipment : UserControl
     {
-        public List<int> equipmentList = new List<int>() { 1, 2, 3 };
+        public class EquipmentData
+        {
+            private string name;
+            private DateTime purchaseDate;
+            private int warrantyLengthInMonths;
+
+            public string Name { get => name; set => name = value; }
+            public DateTime PurchaseDate { get => purchaseDate; set => purchaseDate = value; }
+            public int WarrantyLengthInMonths { get => warrantyLengthInMonths; set => warrantyLengthInMonths = value; }
+            public bool WarrantyExpired { get => false; }
+
+            public EquipmentData(string name, DateTime purchaseDate, int warrantyLengthInMonths)
+            {
+                Name = name;
+                PurchaseDate = purchaseDate;
+                WarrantyLengthInMonths = warrantyLengthInMonths;
+            }
+        }
+
+        List<EquipmentData> equipmentDataList = new List<EquipmentData>();
+
         public Equipment()
         {
             InitializeComponent();
-            fill_listbox();
-            //FindProvider();
+            getData();
+            equipment_listbox.ItemsSource = equipmentDataList;
         }
 
-        public void FindProvider()
+        void getData()
         {
-            var reader = OleDbEnumerator.GetRootEnumerator();
-
-            var list = new List<String>();
-            while (reader.Read())
+            OleDbConnection con = new OleDbConnection
             {
-                for (var i = 0; i < reader.FieldCount; i++)
-                {
-                    if (reader.GetName(i) == "SOURCES_NAME")
-                    {
-                        list.Add(reader.GetValue(i).ToString());
+                ConnectionString =
+                    ConfigurationManager.
+                        ConnectionStrings["CSC578.Properties.Settings.DatabaseConnectionString"].
+                            ToString()
+            };
 
-                    }
-                }
-            }
-            reader.Close();
-            foreach (var provider in list)
-            {
-                equipment_listbox.Items.Add(provider.ToString());
-                if (provider.StartsWith("Microsoft.ACE.OLEDB"))
-                {
-                    //this.provider = provider.ToString();
-                    equipment_listbox.Items.Add(provider.ToString());
-                }
-            }
-        }
-
-
-        void fill_listbox()
-        {
-            List<string> data = new List<string>();
-            OleDbConnection con = new OleDbConnection();
-            con.ConnectionString = 
-                ConfigurationManager.ConnectionStrings["CSC578.Properties.Settings.DatabaseConnectionString"].ToString();
             con.Open();
-            OleDbCommand cmd = new OleDbCommand();
-            cmd.CommandText = "select * from [EquipmentItems]";
-            cmd.Connection = con;
+            OleDbCommand cmd = new OleDbCommand
+            {
+                CommandText = "select * from [EquipmentItems]",
+                Connection = con
+            };
+
             OleDbDataReader rd = cmd.ExecuteReader();
 
-            while(rd.Read())
+            while (rd.Read())
             {
-                data.Add(rd.GetString(1));
+                equipmentDataList.Add(new EquipmentData(rd.GetString(1), 
+                                                        new DateTime(), 
+                                                        rd.GetInt32(3)));
             }
             rd.Close();
-            equipment_listbox.ItemsSource = data;
         }
+
     }
 }
