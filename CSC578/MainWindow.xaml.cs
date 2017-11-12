@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.OleDb;
 using System.Data;
+using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace CSC578
 {
@@ -50,6 +52,37 @@ namespace CSC578
 
         }
 
+
+         //Food Tabbed Menu Action methods Start
+
+        private void foodSearchSubmitButtonClicked(object sender, RoutedEventArgs e)
+        {
+            Debug.Write("Food>>Search>>Submit Button Clicked");
+        }
+
+        private void foodSearchCancelButtonClicked(object sender, RoutedEventArgs e)
+        {
+            Debug.Write("Food>>Search>>Cancel Button Clicked");
+        }
+
+        private void foodAddSubmitButtonClicked(object sender, RoutedEventArgs e)
+        {
+            Debug.Write("Food>>Add>>Submit Button Clicked");
+        }
+
+        private void foodAddCancelButtonClicked(object sender, RoutedEventArgs e)
+        {
+            Debug.Write("Food>>Add>>Cancel Button Clicked");
+        }
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        //Food Tabbed Menu Action methods End
+
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
             addTaskWindow taskWindow = new addTaskWindow();
@@ -61,5 +94,7 @@ namespace CSC578
             Settings settings = new Settings();
             settings.Show();
         }
+
+
     }
 }
