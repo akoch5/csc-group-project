@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CSC578"
+        xmlns:maintenance="clr-namespace:CSC578.Maintenance"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="800">
     <Grid>
@@ -61,8 +62,8 @@
 
                 </Grid>
             </TabItem>
-            <TabItem Header="Maintenance" Margin="-2,-2,-2,0">
-                <local:Maintenance />
+            <TabItem Header="Equipment Inventory" Margin="-2,-2,-2,0">
+                <maintenance:EquipmentInventory/>
             </TabItem>
             <TabItem Header="Kitchen 2.0" Margin="-2,-2,-2,0">
                 <Grid Background="#FFE5E5E5" Margin="1,0,-1,0"/>

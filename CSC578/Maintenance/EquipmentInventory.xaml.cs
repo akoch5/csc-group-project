@@ -13,14 +13,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CSC578
+namespace CSC578.Maintenance
 {
     /// <summary>
-    /// Interaction logic for Maintenance.xaml
+    /// Interaction logic for EquipmentInventory.xaml
     /// </summary>
-    public partial class Maintenance : UserControl
+    /// 
+
+    
+
+    public partial class EquipmentInventory : UserControl
     {
-        public Maintenance()
+        public EquipmentInventory()
         {
             InitializeComponent();
         }
