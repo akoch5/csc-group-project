@@ -8,24 +8,39 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
 
-    <Grid Background="#FFE5E5E5">
-        <ListBox x:Name="equipment_listbox" 
+    <Grid Background="#FFE5E5E5" Margin="0,0,-322,0">
+        <ListView x:Name="equipment_listbox" 
                  HorizontalAlignment="Left" 
                  Height="280" 
-                 Margin="68,10,0,0" 
+                 Margin="90,10,0,0" 
                  VerticalAlignment="Top" 
-                 Width="222">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Padding="5,0,5,0"
-                                   Text="{Binding Name}" />
-                        <TextBlock Text="Todo" />
-                        <TextBlock Text="{Binding WarrantyLengthInMonths}" />
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+                 Width="504">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name"
+                                DisplayMemberBinding="{Binding Name}"    
+                />
+                    <GridViewColumn Header="Purchase Date"
+                                DisplayMemberBinding="{Binding PurchaseDate}"    
+                />
+                    <GridViewColumn Header="Warranty (Months)"
+                                DisplayMemberBinding="{Binding WarrantyLengthInMonths}"    
+                />
+                    <GridViewColumn Header="Warranty Expired"
+                                DisplayMemberBinding="{Binding WarrantyExpired}"    
+                />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Content="Add" 
+                HorizontalAlignment="Left" 
+                Margin="10,45,0,0" 
+                VerticalAlignment="Top" 
+                Width="75"
+                Click="ButtonAdd_Click"
+                />
+        <Button Content="Remove" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Modify" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" Width="75"/>
     </Grid>
 
 </UserControl>
