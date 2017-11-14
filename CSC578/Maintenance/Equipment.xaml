@@ -39,8 +39,20 @@
                 Width="75"
                 Click="ButtonAdd_Click"
                 />
-        <Button Content="Remove" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Modify" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Remove" 
+                HorizontalAlignment="Left" 
+                Margin="10,70,0,0" 
+                VerticalAlignment="Top" 
+                Width="75"
+                Click="ButtonRemove_Click"
+                />
+        <Button Content="Modify" 
+                HorizontalAlignment="Left" 
+                Margin="10,95,0,0" 
+                VerticalAlignment="Top" 
+                Width="75"
+                Click="ButtonModify_Click"
+                />
     </Grid>
 
 </UserControl>

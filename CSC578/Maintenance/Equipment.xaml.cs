@@ -97,6 +97,26 @@ namespace CSC578.Maintenance
             editEquipmentForm.Show();
         }
 
+        void ButtonModify_Click(object sender, RoutedEventArgs e)
+        {
+            EquipmentData equipmentData = (EquipmentData)equipment_listbox.SelectedItem;
+            if(equipmentData != null)
+            {
+                EditEquipmentForm editEquipmentForm = new EditEquipmentForm(equipmentData, this);
+                editEquipmentForm.Show();
+            }
+            
+        }
+
+        void ButtonRemove_Click(object sender, RoutedEventArgs e)
+        {
+            EquipmentData equipmentData = (EquipmentData)equipment_listbox.SelectedItem;
+            if (equipmentData != null)
+            {
+                DeleteItem(equipmentData);
+            }
+        }
+
         internal void AddItem(EquipmentData equipmentData)
         {
 
@@ -112,10 +132,20 @@ namespace CSC578.Maintenance
         {
             Debug.Write("Equipment::ModifyItem");
 
-           string query = "update EquipmentItems set  EquipmentName        = '{equipmentData.Name}', " +
+            string query = $"update EquipmentItems set  EquipmentName        = '{equipmentData.Name}', " +
                                          $"         DatePurchased        = '{equipmentData.PurchaseDate.ToString()}'," +
                                          $"         WarrantyLengthMonths = {equipmentData.WarrantyLengthInMonths}" +
                                          $"         WHERE ID             = {equipmentData.Id}";
+            WriteDB(query);
+            GetData();
+        }
+
+        internal void DeleteItem(EquipmentData equipmentData)
+        {
+            Debug.Write("Equipment::DeleteItem");
+
+            string query = $"DELETE * from EquipmentItems WHERE ID = {equipmentData.Id}";
+
             WriteDB(query);
             GetData();
         }

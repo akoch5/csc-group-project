@@ -28,6 +28,7 @@ namespace CSC578.Maintenance
 
         public EditEquipmentForm(EquipmentData data, Equipment equipmentControl)
         {
+            InitializeComponent();
             Debug.Write("EditEquipmentForm");
             this.equipmentControl = equipmentControl;
             if (data.Id != null)
@@ -39,7 +40,7 @@ namespace CSC578.Maintenance
                 EWarranty.Text = data.WarrantyLengthInMonths.ToString();
             }
             
-            InitializeComponent();
+            
         }
 
         private void ButtonOK_Click(object sender, RoutedEventArgs e)
