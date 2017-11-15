@@ -106,6 +106,9 @@
     <Compile Include="Maintenance\EditEquipmentForm.xaml.cs">
       <DependentUpon>EditEquipmentForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Maintenance\EditMaintenanceForm.xaml.cs">
+      <DependentUpon>EditMaintenanceForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Maintenance\Equipment.xaml.cs">
       <DependentUpon>Equipment.xaml</DependentUpon>
     </Compile>
@@ -133,6 +136,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Maintenance\EditEquipmentForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Maintenance\EditMaintenanceForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
