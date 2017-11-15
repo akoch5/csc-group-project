@@ -63,7 +63,7 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Equipment Inventory" Margin="-2,-2,-2,0">
-                <maintenance:EquipmentInventory Loaded="EquipmentInventory_Loaded"/>
+                <maintenance:EquipmentInventory/>
             </TabItem>
             <TabItem Header="Kitchen 2.0" Margin="-2,-2,-2,0">
                 <Grid Background="#FFE5E5E5" Margin="1,0,-1,0">
