@@ -63,10 +63,22 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Equipment Inventory" Margin="-2,-2,-2,0">
-                <maintenance:EquipmentInventory/>
+                <maintenance:EquipmentInventory Loaded="EquipmentInventory_Loaded"/>
             </TabItem>
             <TabItem Header="Kitchen 2.0" Margin="-2,-2,-2,0">
-                <Grid Background="#FFE5E5E5" Margin="1,0,-1,0"/>
+                <Grid Background="#FFE5E5E5" Margin="1,0,-1,0">
+                    <ListBox x:Name="FoodItemsAvailableListBox" HorizontalAlignment="Left" Height="164" Margin="53,70,0,0" VerticalAlignment="Top" Width="217"/>
+                    <Label Content="Food Items Available" HorizontalAlignment="Left" Margin="107,40,0,0" VerticalAlignment="Top" Width="128" Height="30"/>
+                    <Label Content="Available Recipes" HorizontalAlignment="Left" Margin="107,276,0,0" VerticalAlignment="Top" Width="107" Height="30"/>
+                    <ListBox x:Name="availableRecipesListBox" HorizontalAlignment="Left" Height="164" Margin="53,312,0,0" VerticalAlignment="Top" Width="217"/>
+                    <ListBox x:Name="weeklyMealPlanListBox" HorizontalAlignment="Left" Height="164" Margin="468,70,0,0" VerticalAlignment="Top" Width="217"/>
+                    <Label Content="Weekly Meal Plan" HorizontalAlignment="Left" Margin="519,40,0,0" VerticalAlignment="Top" Width="111" Height="30"/>
+                    <Label Content="Interactive Shoping List of Recipes" HorizontalAlignment="Left" Margin="474,276,0,0" VerticalAlignment="Top" Width="204" Height="30"/>
+                    <ListBox x:Name="interactiveShoppingListBox" HorizontalAlignment="Left" Height="164" Margin="468,312,0,0" VerticalAlignment="Top" Width="217"/>
+                    <Button x:Name="loadFoodButton" Content="Load Food" HorizontalAlignment="Left" Margin="123,251,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+                    <Button x:Name="loadRecipesButton" Content="Load Recipes" HorizontalAlignment="Left" Margin="109,481,0,0" VerticalAlignment="Top" Width="89" Click="Button_Click"/>
+                    <Button x:Name="createMealPlanButton" Content="Create Meal Plan" HorizontalAlignment="Left" Margin="531,251,0,0" VerticalAlignment="Top" Width="99" Click="Button_Click"/>
+                </Grid>
             </TabItem>
         </TabControl>
 

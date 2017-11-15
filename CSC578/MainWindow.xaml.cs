@@ -114,6 +114,11 @@ namespace CSC578
             con.Close();
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
 
         //Cleaning Tab Menu Action methods end.
 
