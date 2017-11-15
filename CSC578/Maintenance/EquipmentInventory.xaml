@@ -11,11 +11,8 @@
             <TabItem Header="Equipment">
                 <local:Equipment/>
             </TabItem>
-            <TabItem Header="Warranty">
-                <local:Warranty/>
-            </TabItem>
             <TabItem Header="Maitanance">
-                <local:Maitanance/>
+                <local:EquipmentMaintenance/>
             </TabItem>
         </TabControl>
     </Grid>
