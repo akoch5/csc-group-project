@@ -112,11 +112,11 @@
     <Compile Include="Maintenance\EquipmentInventory.xaml.cs">
       <DependentUpon>EquipmentInventory.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Maintenance\EquipmentMaintenance.xaml.cs">
+      <DependentUpon>EquipmentMaintenance.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Maintenance\Maitanance.xaml.cs">
       <DependentUpon>Maitanance.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Maintenance\Warranty.xaml.cs">
-      <DependentUpon>Warranty.xaml</DependentUpon>
     </Compile>
     <Compile Include="Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
@@ -144,11 +144,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Maintenance\Maitanance.xaml">
+    <Page Include="Maintenance\EquipmentMaintenance.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Maintenance\Warranty.xaml">
+    <Page Include="Maintenance\Maitanance.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
