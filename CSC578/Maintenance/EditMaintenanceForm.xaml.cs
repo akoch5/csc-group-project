@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static CSC578.Maintenance.EquipmentMaintenance;
 
 namespace CSC578.Maintenance
 {
@@ -25,47 +27,59 @@ namespace CSC578.Maintenance
             InitializeComponent();
         }
 
+        ObservableCollection<string> _availableEquipmentList;
 
-
-        private Equipment equipmentControl; // todo 
-
-        public EditMaintenanceForm(EditMaintenanceForm data, Equipment equipmentControl)
+        private EquipmentMaintenance _equipmentMaintenance;
+        
+        public EditMaintenanceForm(MaintenanceData data, 
+                                   EquipmentMaintenance equipmentMaintenance,
+                                   ObservableCollection<string> availableEquipmentList
+            )
         {
             InitializeComponent();
             Debug.Write("EditMaintenanceForm");
-            this.equipmentControl = equipmentControl;
-          //  if (data.Id != null)
+            this._equipmentMaintenance = equipmentMaintenance;
+            this._availableEquipmentList = availableEquipmentList;
+            M_Name.ItemsSource = _availableEquipmentList;
+            if (data.Id != null)
             {
- 
+                MId.Text = data.Id.ToString();
+                M_LastMaintenace.SelectedDate = data.LastMaintenance;
+                M_LastMaintenace.DisplayDateStart = data.LastMaintenance;
+                M_Task.Text = data.MaintanceItem;
+                if(availableEquipmentList.Count == 0)
+                {
+                    throw new NotImplementedException();
+                }
+                M_Frequency.Text = data.Frequency.ToString();
             }
-
-
         }
 
         private void ButtonOK_Click(object sender, RoutedEventArgs e)
         {
             Debug.Write("EditMaintenanceForm ButtonOK_Click");
-            /*
-            if (EId.Text != "")
+            if (MId.Text != "")
             {
-                
-                int id = Int32.Parse(EId.Text);
-                int warrantyMonths = Int32.Parse(EWarranty.Text);
-                equipmentControl.ModifyItem(new EquipmentData(id,
-                                                   EName.Text,
-                                                   EDate.SelectedDate.Value.Date,
-                                                   warrantyMonths));
+                _equipmentMaintenance.
+                    ModifyItem(new MaintenanceData(Int32.Parse(MId.Text),
+                                                   _equipmentMaintenance.EquipmentNameToId((string)M_Name.SelectedValue),
+                                                   (string)M_Name.SelectedValue,
+                                                   M_Task.Text,
+                                                   M_LastMaintenace.SelectedDate.Value.Date,
+                                                   Int32.Parse(M_Frequency.Text)));
+                                                   
                                             
             }
             else
             {
-                equipmentControl.AddItem(new EquipmentData(null,
-                                                   EName.Text,
-                                                   EDate.SelectedDate.Value.Date,
-                                                   Int32.Parse(EWarranty.Text)));
+                _equipmentMaintenance.AddItem(new MaintenanceData(null,
+                                                   _equipmentMaintenance.EquipmentNameToId((string)M_Name.SelectedValue),
+                                                   (string)M_Name.SelectedValue,
+                                                   M_Task.Text,
+                                                   M_LastMaintenace.SelectedDate.Value.Date,
+                                                   Int32.Parse(M_Frequency.Text)));
             }
             this.Close();
-            */
         }
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)

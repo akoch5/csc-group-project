@@ -56,7 +56,7 @@ namespace CSC578.Maintenance
             
         }
 
-        void GetData()
+        public void GetData()
         {
             equipmentDataList.Clear();
             // should capture db error exceptions and present a popup
@@ -68,25 +68,47 @@ namespace CSC578.Maintenance
                             ToString()
             };
 
-            con.Open();
-            OleDbCommand cmd = new OleDbCommand
+            try
             {
-                CommandText = "select * from [EquipmentItems]",
-                Connection = con
-            };
-
-            OleDbDataReader rd = cmd.ExecuteReader();
-
-            while (rd.Read())
-            {
-                // Should try this and print equery popup error
-                equipmentDataList.Add(new EquipmentData(rd.GetInt32(0),
-                                                        rd.GetString(1), 
-                                                        rd.GetDateTime(2),
-                                                        rd.GetInt32(3)));
+                con.Open();
             }
-            rd.Close();
-            equipment_listbox.ItemsSource = equipmentDataList;
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to connect to db: " + ex.Message);
+                Debug.Write("Equipment::WriteDB ButtonOK_Click: Failed to save: " + ex.Message);
+                con.Close();
+                return;
+            }
+           
+            OleDbCommand cmd = new OleDbCommand
+                {
+                    CommandText = "select * from [EquipmentItems]",
+                    Connection = con
+                };
+            try
+            { 
+                OleDbDataReader rd = cmd.ExecuteReader();
+
+                while (rd.Read())
+                {
+                    // Should try this and print equery popup error
+                    equipmentDataList.Add(new EquipmentData(rd.GetInt32(0),
+                                                            rd.GetString(1),
+                                                            rd.GetDateTime(2),
+                                                            rd.GetInt32(3)));
+                }
+                rd.Close();
+                equipment_listbox.ItemsSource = equipmentDataList;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to read data: " + ex.Message);
+                Debug.Write("Equipment::WriteDB ButtonOK_Click: Failed to save: " + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
         }
 
 

@@ -7,11 +7,12 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Background="#FFE5E5E5" Margin="1,0,-318,-136">
-        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="600" Margin="-2,1,0,0" VerticalAlignment="Top" Width="800">
+        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="600" Margin="-2,1,0,0" VerticalAlignment="Top" Width="800"
+                    SelectionChanged="TabControl_SelectionChanged">
             <TabItem Header="Equipment">
                 <local:Equipment/>
             </TabItem>
-            <TabItem Header="Maitanance">
+            <TabItem Header="Maintenance">
                 <local:EquipmentMaintenance/>
             </TabItem>
         </TabControl>

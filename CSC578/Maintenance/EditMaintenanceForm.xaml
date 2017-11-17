@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CSC578.Maintenance"
         mc:Ignorable="d"
-        Title="EditMaintenanceForm" Height="300" Width="300">
+        Title="EditMaintenanceForm" Height="300" Width="300"
+           d:DesignHeight="200" d:DesignWidth="300"
+        >
 
 
     <Grid Background="#FFE5E5E5">
@@ -19,7 +21,7 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <Label Grid.Row="0"
-                Content="Add/Edit Equipment" 
+                Content="Add/Edit Maitenance" 
                 HorizontalAlignment="Center" 
                 Margin="0,10,0,10" 
                 VerticalAlignment="Center"/>
@@ -29,6 +31,7 @@
             >
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"  />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -45,7 +48,7 @@
                     Margin="10,0,0,0" 
                     VerticalAlignment="Center"/>
 
-            <TextBox x:Name="EName"
+            <ComboBox x:Name="M_Name"
                     Grid.Row="1"
                     Grid.Column="1"
                     Width="120"
@@ -55,33 +58,49 @@
 
             <Label Grid.Row="2"
                    Grid.Column="0"
-                   Content="Purchase Date" 
+                   Content="Task" 
                    HorizontalAlignment="Left" 
                    Margin="10,0,0,0" 
                    VerticalAlignment="Center"/>
 
-            <DatePicker x:Name="EDate"
+            <TextBox x:Name="M_Task"
                         Grid.Row="2"
                         Grid.Column="1"
                         HorizontalAlignment="Left" 
+                        Width="120"
                         Margin="10,0,0,0" 
                         VerticalAlignment="Center"/>
 
             <Label 
                     Grid.Row="3"
                     Grid.Column="0"
-                    Content="Warranty Peroid (months)" 
+                    Content="Last Maitenance" 
                     HorizontalAlignment="Left" 
                     Margin="10,0,0,0" 
                     VerticalAlignment="Center"/>
 
-            <TextBox x:Name="EWarranty"
+            <DatePicker x:Name="M_LastMaintenace"
                     Grid.Row="3"
                     Grid.Column="1"
                     Width="120"
                     HorizontalAlignment="Left" 
                     Margin="10,0,0,0" 
                     VerticalAlignment="Center"/>
+            <Label Grid.Row="4"
+                   Grid.Column="0"
+                   Content="Frequency (Months)" 
+                   HorizontalAlignment="Left" 
+                   Margin="10,0,0,0" 
+                   VerticalAlignment="Center"/>
+
+            <TextBox x:Name="M_Frequency"
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        HorizontalAlignment="Left" 
+                        Margin="10,0,0,0" 
+                        Width="120"
+                        VerticalAlignment="Center"/>
+
         </Grid>
         <Grid            
                 Grid.Row="3"
@@ -108,7 +127,7 @@
                     Width="75" 
                     Click="ButtonCancel_Click"/>
         </Grid>
-        <TextBox x:Name="EId"
+        <TextBox x:Name="MId"
              Visibility="Hidden"
                  
              />

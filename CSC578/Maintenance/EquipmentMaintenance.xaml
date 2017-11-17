@@ -18,7 +18,7 @@
                     <GridViewColumn Header="Name"
                                 DisplayMemberBinding="{Binding EquipmentName}"    
                 />
-                    <GridViewColumn Header="Maitenance Item"
+                    <GridViewColumn Header="Maintenance Item"
                                 DisplayMemberBinding="{Binding MaintanceItem}"    
                 />
                     <GridViewColumn Header="Last Maintenance"
