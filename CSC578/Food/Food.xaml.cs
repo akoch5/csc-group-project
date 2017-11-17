@@ -154,17 +154,24 @@ namespace CSC578.Food
 
         private void foodAddCancelButtonClicked(object sender, RoutedEventArgs e)
         {
-            Debug.Write("Food>>Add>>Cancel Button Clicked");            
+            Debug.Write("Food>>Add>>Cancel Button Clicked");
+            foodNameText.Clear();
+            foodQtyText.Clear();
+            foodThresholdText.Clear();
+            foodExpirationDate.SelectedDate = null;
         }
 
         private void foodSearchSubmitButtonClicked(object sender, RoutedEventArgs e)
         {
+            FoodResults foodResults = new FoodResults(foodGroupCombo.Text);                        
+            foodResults.Show();
             Debug.Write("Food>>Search>>Submit Button Clicked");
         }
 
         private void foodSearchCancelButtonClicked(object sender, RoutedEventArgs e)
         {
             Debug.Write("Food>>Search>>Cancel Button Clicked");
+            searchExpDate.SelectedDate = null;
         }
 
 

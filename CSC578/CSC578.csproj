@@ -103,6 +103,9 @@
     <Compile Include="EmployeeList.xaml.cs">
       <DependentUpon>EmployeeList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Food\FoodResults.xaml.cs">
+      <DependentUpon>FoodResults.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Food\Food.xaml.cs">
       <DependentUpon>Food.xaml</DependentUpon>
     </Compile>
@@ -137,6 +140,10 @@
     <Page Include="EmployeeList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Food\FoodResults.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Food\Food.xaml">
       <Generator>MSBuild:Compile</Generator>
