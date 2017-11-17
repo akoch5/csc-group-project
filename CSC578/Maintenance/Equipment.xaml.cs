@@ -35,7 +35,7 @@ namespace CSC578.Maintenance
             public string Name { get => name; set => name = value; }
             public DateTime PurchaseDate { get => purchaseDate; set => purchaseDate = value; }
             public int WarrantyLengthInMonths { get => warrantyLengthInMonths; set => warrantyLengthInMonths = value; }
-            public bool WarrantyExpired { get => false; }
+            public string WarrantyExpired { get => GetWarrantyExpired(); }
 
             public EquipmentData(int? id, string name, DateTime purchaseDate, int warrantyLengthInMonths)
             {
@@ -43,6 +43,20 @@ namespace CSC578.Maintenance
                 Name = name;
                 PurchaseDate = purchaseDate;
                 WarrantyLengthInMonths = warrantyLengthInMonths;
+            }
+
+            string GetWarrantyExpired()
+            {
+                DateTime expiration_date = new DateTime(purchaseDate.Year, purchaseDate.Month, purchaseDate.Day).AddMonths(WarrantyLengthInMonths);
+                int compareValue = expiration_date.CompareTo(DateTime.Today);
+                if(compareValue > 0)
+                {
+                    return "No";
+                }
+                else
+                {
+                    return "Yes";
+                }
             }
         }
 
