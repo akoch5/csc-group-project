@@ -54,37 +54,6 @@ namespace CSC578
 
 
 
-         //Food Tabbed Menu Action methods Start
-
-        private void foodSearchSubmitButtonClicked(object sender, RoutedEventArgs e)
-        {
-            Debug.Write("Food>>Search>>Submit Button Clicked");
-        }
-
-        private void foodSearchCancelButtonClicked(object sender, RoutedEventArgs e)
-        {
-            Debug.Write("Food>>Search>>Cancel Button Clicked");
-        }
-
-        private void foodAddSubmitButtonClicked(object sender, RoutedEventArgs e)
-        {
-            Debug.Write("Food>>Add>>Submit Button Clicked");
-        }
-
-        private void foodAddCancelButtonClicked(object sender, RoutedEventArgs e)
-        {
-            Debug.Write("Food>>Add>>Cancel Button Clicked");
-        }
-
-        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
-        {
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
-        }
-
-        //Food Tabbed Menu Action methods End
-
-
         //Cleaning Tab Menu Action methods Begin.
 
         private void addButton_Click(object sender, RoutedEventArgs e)

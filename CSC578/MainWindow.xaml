@@ -4,51 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CSC578"
-        xmlns:maintenance="clr-namespace:CSC578.Maintenance"
+        xmlns:food="clr-namespace:CSC578.Food"
+        xmlns:maintenance="clr-namespace:CSC578.Maintenance"        
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="800">
     <Grid>
         <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="600" Margin="-2,1,0,0" VerticalAlignment="Top" Width="800">
             <TabItem Header="Food">
-                <Grid Background="#FFE5E5E5">
-                    <TabControl HorizontalAlignment="Left" Height="489" Margin="10,29,0,0" VerticalAlignment="Top" Width="755">
-                        <TabItem Header="Add">
-                            <Grid Background="#FFE5E5E5">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="0*"/>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
-                                <Label Content="Food Type" HorizontalAlignment="Left" Height="40" Margin="69,43,0,0" VerticalAlignment="Top" Width="195" Grid.Column="1"/>
-                                <Label Content="Name" HorizontalAlignment="Left" Height="40" Margin="69,88,0,0" VerticalAlignment="Top" Width="195" Grid.Column="1"/>
-                                <Label Content="Quantity" HorizontalAlignment="Left" Height="40" Margin="69,148,0,0" VerticalAlignment="Top" Width="195" Grid.Column="1"/>
-                                <Label Content="Threshold Limit" HorizontalAlignment="Left" Height="40" Margin="69,193,0,0" VerticalAlignment="Top" Width="195" Grid.Column="1"/>
-                                <Label Content="Expiration Date" HorizontalAlignment="Left" Height="40" Margin="69,238,0,0" VerticalAlignment="Top" Width="195" Grid.Column="1"/>
-                                <ComboBox x:Name="foodTypeCombo" HorizontalAlignment="Left" Margin="327,43,0,0" VerticalAlignment="Top" Width="196" Height="35" Grid.Column="1"/>
-                                <TextBox x:Name="foodNameText" HorizontalAlignment="Left" Height="25" Margin="327,92,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="196" Grid.Column="1"/>
-                                <TextBox x:Name="foodQtyText" HorizontalAlignment="Left" Height="25" Margin="327,148,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="196" Grid.Column="1" PreviewTextInput="NumberValidationTextBox"/>
-                                <TextBox x:Name="foodThresholdText" HorizontalAlignment="Left" Height="25" Margin="327,193,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="196" Grid.Column="1" PreviewTextInput="NumberValidationTextBox"/>
-                                <DatePicker x:Name="foodExpirationDate" HorizontalAlignment="Left" Height="35" Margin="327,243,0,0" VerticalAlignment="Top" Width="196" Grid.Column="1"/>
-                                <Button Content="Submit" HorizontalAlignment="Left" Margin="99,354,0,0" VerticalAlignment="Top" Width="107" Height="34" Grid.Column="1" Click="foodAddSubmitButtonClicked"/>
-                                <Button Content="Cancel" HorizontalAlignment="Left" Margin="416,354,0,0" VerticalAlignment="Top" Width="107" Height="34" Grid.Column="1" Click="foodAddCancelButtonClicked"/>
-                            </Grid>
-                        </TabItem>
-                        <TabItem Header="Search">
-                            <Grid Background="#FFE5E5E5">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="3*"/>
-                                    <ColumnDefinition Width="746*"/>
-                                </Grid.ColumnDefinitions>
-                                <Label Content="Food Group" HorizontalAlignment="Left" Height="40" Margin="126.891,88,0,0" VerticalAlignment="Top" Width="195" Grid.Column="1"/>
-                                <TextBox x:Name="searchFoodText" HorizontalAlignment="Left" Height="25" Margin="393.891,92,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="196" Grid.Column="1"/>
-                                <Label Content="Expiration Date" HorizontalAlignment="Left" Height="40" Margin="126.891,238,0,0" VerticalAlignment="Top" Width="132" Grid.Column="1"/>
-                                <ComboBox x:Name="searchExpDtCriteria" HorizontalAlignment="Left" Margin="258.891,238,0,0" VerticalAlignment="Top" Width="101" Height="35" Grid.Column="1"/>
-                                <DatePicker x:Name="searchExpDate" HorizontalAlignment="Left" Height="35" Margin="393.891,238,0,0" VerticalAlignment="Top" Width="196" Grid.Column="1"/>
-                                <Button Content="Search" HorizontalAlignment="Left" Margin="99,354,0,0" VerticalAlignment="Top" Width="107" Height="34" Grid.Column="1" Click="foodSearchSubmitButtonClicked"/>
-                                <Button Content="Cancel" HorizontalAlignment="Left" Margin="416,354,0,0" VerticalAlignment="Top" Width="107" Height="34" Grid.Column="1" Click="foodSearchCancelButtonClicked"/>
-                            </Grid>
-                        </TabItem>
-                    </TabControl>
-                </Grid>
+                <food:FoodTab/>
             </TabItem>
             <TabItem Header="Cleaning">
                 <Grid Background="#FFE5E5E5" Margin="1,0,-1,0">
