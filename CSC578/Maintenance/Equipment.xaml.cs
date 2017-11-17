@@ -161,7 +161,6 @@ namespace CSC578.Maintenance
                                $" ('{equipmentData.Name}', '{equipmentData.PurchaseDate.ToString()}', {equipmentData.WarrantyLengthInMonths})"; 
                                          
             WriteDB(query);
-            GetData();
         }
 
         internal void ModifyItem(EquipmentData equipmentData)
@@ -173,7 +172,6 @@ namespace CSC578.Maintenance
                                          $"         WarrantyLengthMonths = {equipmentData.WarrantyLengthInMonths}" +
                                          $"         WHERE ID             = {equipmentData.Id}";
             WriteDB(query);
-            GetData();
         }
 
         internal void DeleteItem(EquipmentData equipmentData)
@@ -183,7 +181,6 @@ namespace CSC578.Maintenance
             string query = $"DELETE * from EquipmentItems WHERE ID = {equipmentData.Id}";
 
             WriteDB(query);
-            GetData();
         }
 
         internal void WriteDB(String query)
@@ -219,8 +216,8 @@ namespace CSC578.Maintenance
             {
                 dbConnection.Close();
             }
-                
 
+            GetData();
         }
     }
 }

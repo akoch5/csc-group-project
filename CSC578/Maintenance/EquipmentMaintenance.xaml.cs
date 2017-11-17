@@ -59,8 +59,27 @@ namespace CSC578.Maintenance
             public string MaintanceItem { get => maintanceItem; set => maintanceItem = value; }
             public DateTime LastMaintenance { get => lastMaintenance; set => lastMaintenance = value; }
             public int Frequency { get => frequencyMonths; set => frequencyMonths = value; }
-            public string Status { get => status; set => status = value; }
+            public string Status { get => CalculateStatus(); set => status = value; }
             public int EquipmentID { get => equipmentID; set => equipmentID = value; }
+
+            string CalculateStatus()
+            {
+                DateTime next_maintenance = new DateTime(LastMaintenance.Year, LastMaintenance.Month, LastMaintenance.Day)
+                    .AddMonths(Frequency);
+
+                int compareExpired = next_maintenance.CompareTo(DateTime.Today);
+                if (compareExpired < 0)
+                {
+                    return "Overdue";
+                }
+
+                int compareOverDueSoon = next_maintenance.CompareTo(DateTime.Today.AddMonths(1));
+                if (compareOverDueSoon < 0)
+                {
+                    return "Due Soon";
+                }
+                return "Good";
+            }
         }
 
         void GetData()

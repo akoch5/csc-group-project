@@ -21,7 +21,7 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <Label Grid.Row="0"
-                Content="Add/Edit Maitenance" 
+                Content="Add/Edit Maintenance" 
                 HorizontalAlignment="Center" 
                 Margin="0,10,0,10" 
                 VerticalAlignment="Center"/>
@@ -74,7 +74,7 @@
             <Label 
                     Grid.Row="3"
                     Grid.Column="0"
-                    Content="Last Maitenance" 
+                    Content="Last Maintenance" 
                     HorizontalAlignment="Left" 
                     Margin="10,0,0,0" 
                     VerticalAlignment="Center"/>
