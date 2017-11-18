@@ -100,8 +100,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="EmployeeList.xaml.cs">
+    <Compile Include="Cleaning\addTaskWindow.xaml.cs">
+      <DependentUpon>addTaskWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Cleaning\Cleaning.xaml.cs">
+      <DependentUpon>Cleaning.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Cleaning\EmployeeList.xaml.cs">
       <DependentUpon>EmployeeList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Cleaning\Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Cleaning\TaskList.xaml.cs">
+      <DependentUpon>TaskList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Food\FoodResults.xaml.cs">
       <DependentUpon>FoodResults.xaml</DependentUpon>
@@ -127,19 +139,25 @@
     <Compile Include="Maintenance\Maitanance.xaml.cs">
       <DependentUpon>Maitanance.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Settings.xaml.cs">
-      <DependentUpon>Settings.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="TaskList.xaml.cs">
-      <DependentUpon>TaskList.xaml</DependentUpon>
-    </Compile>
-    <Page Include="addTaskWindow.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Cleaning\addTaskWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
-    <Page Include="EmployeeList.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Cleaning\Cleaning.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Cleaning\EmployeeList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Cleaning\Settings.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Cleaning\TaskList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Food\FoodResults.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -177,9 +195,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="addTaskWindow.xaml.cs">
-      <DependentUpon>addTaskWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -188,14 +203,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Settings.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="TaskList.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -231,6 +238,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
