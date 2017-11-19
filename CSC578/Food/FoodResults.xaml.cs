@@ -108,7 +108,6 @@ namespace CSC578.Food
                 }
                 rd.Close();
                 foodResults_list.ItemsSource = foodResultList;
-                foodResults_list.Items.Refresh();
             }
             catch (Exception ex)
             {

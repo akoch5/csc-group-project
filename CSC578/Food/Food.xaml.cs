@@ -102,7 +102,7 @@ namespace CSC578.Food
 
         internal void WriteToDB(String query)
         {
-            Debug.Write("Equipment:WriteDB");
+            Debug.Write("Food:WriteDB");
             OleDbConnection dbConnection = new OleDbConnection
             {
                 ConnectionString =
