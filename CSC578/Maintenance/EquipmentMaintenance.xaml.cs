@@ -82,7 +82,7 @@ namespace CSC578.Maintenance
             }
         }
 
-        void GetData()
+        public void GetData()
         {
             _maintenanceDataList.Clear();
             // should capture db error exceptions and present a popup
@@ -199,6 +199,7 @@ namespace CSC578.Maintenance
             }
         }
 
+
         internal void AddItem(MaintenanceData maintenanceData)
         {
             string query = "INSERT INTO EquipmentMaintenance " +
@@ -275,5 +276,9 @@ namespace CSC578.Maintenance
 
         }
 
+        private void Maintenance_listbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }

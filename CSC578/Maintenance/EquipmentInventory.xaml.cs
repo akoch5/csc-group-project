@@ -31,8 +31,13 @@ namespace CSC578.Maintenance
         }
 
         void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
+        {            
+            if (sender is TabControl)
+            {
+                EquipmentTab.GetData();
+                MaintenanceTab.GetData();
+                e.Handled = true;
+            }
         }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CSC578.Maintenance"
         mc:Ignorable="d"
-        Title="EditMaintenanceForm" Height="300" Width="300"
+        Title="Add/Edit Maintenance" Height="300" Width="300"
            d:DesignHeight="200" d:DesignWidth="300"
         >
 

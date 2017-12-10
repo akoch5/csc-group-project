@@ -219,5 +219,10 @@ namespace CSC578.Maintenance
 
             GetData();
         }
+
+        private void equipment_listbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }
