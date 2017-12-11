@@ -80,6 +80,20 @@ namespace CSC578.Maintenance
                 }
                 return "Good";
             }
+
+            internal void Validate()
+            {
+                if (EquipmentName == "" || ContainsForbiddenCharacters(EquipmentName) ||
+                    MaintanceItem == "" || ContainsForbiddenCharacters(MaintanceItem) ||
+                   LastMaintenance == null)
+                    throw new Exception();
+            }
+
+            bool ContainsForbiddenCharacters(string str)
+            {
+
+                return str.IndexOfAny("~!@#$%^&*()_+-=`{}[]:\"';,./<>?".ToCharArray()) != -1;
+            }
         }
 
         public void GetData()

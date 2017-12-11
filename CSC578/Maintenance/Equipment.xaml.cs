@@ -47,17 +47,29 @@ namespace CSC578.Maintenance
 
             string GetWarrantyExpired()
             {
-                DateTime expiration_date = new DateTime(purchaseDate.Year, purchaseDate.Month, purchaseDate.Day).AddMonths(WarrantyLengthInMonths);
-                int compareValue = expiration_date.CompareTo(DateTime.Today);
-                if(compareValue > 0)
-                {
-                    return "No";
-                }
-                else
-                {
-                    return "Yes";
-                }
+                DateTime expiration_date = new DateTime(purchaseDate.Year, 
+                                                        purchaseDate.Month, 
+                                                        purchaseDate.Day)
+                                                            .AddMonths(WarrantyLengthInMonths);
+
+                return (expiration_date.CompareTo(DateTime.Today) > 0) ? "No" : "Yes";
             }
+
+            internal void Validate()
+            {
+                if(Name == "" || ContainsForbiddenCharacters(Name) || 
+                   PurchaseDate == null)
+                        throw new Exception();
+               
+
+            }
+
+            bool ContainsForbiddenCharacters(string str)
+            {
+
+                return str.IndexOfAny("~!@#$%^&*()_+-=`{}[]:\"';,./<>?".ToCharArray()) != -1;
+            }
+
         }
 
 

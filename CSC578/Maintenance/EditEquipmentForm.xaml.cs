@@ -57,12 +57,34 @@ namespace CSC578.Maintenance
             }
             else
             {
-                equipmentControl.AddItem(new EquipmentData(null,
-                                                   EName.Text,
-                                                   EDate.SelectedDate.Value.Date,
-                                                   Int32.Parse(EWarranty.Text)));
+                try
+                {
+                    var equipmentData = new EquipmentData(null,
+                                             EName.Text,
+                                             EDate.SelectedDate.Value.Date,
+                                             Int32.Parse(EWarranty.Text));
+                    equipmentData.Validate();
+                    equipmentControl.AddItem(equipmentData);
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show("Invalid Input");
+                    TraceMessage("Invalid Input: " + exception.Message);
+                    return;
+                }
             }
             this.Close();
+        }
+
+        public void TraceMessage(string message,
+                                [System.Runtime.CompilerServices.CallerMemberName] string memberName = "",
+                                [System.Runtime.CompilerServices.CallerFilePath] string sourceFilePath = "",
+                                [System.Runtime.CompilerServices.CallerLineNumber] int sourceLineNumber = 0)
+        {
+            System.Diagnostics.Trace.WriteLine("message: " + message);
+            System.Diagnostics.Trace.WriteLine("member name: " + memberName);
+            System.Diagnostics.Trace.WriteLine("source file path: " + sourceFilePath);
+            System.Diagnostics.Trace.WriteLine("source line number: " + sourceLineNumber);
         }
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
