@@ -24,6 +24,7 @@ namespace CSC578
         public addTaskWindow()
         {
             InitializeComponent();
+
             populateTaskCombo();
             populateEmployeeCombo();
             populateFrequency();
@@ -31,10 +32,11 @@ namespace CSC578
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-           
+
             MainWindow.editDB("insert into cleaningTasks (taskName, assignee, frequency, startDate, endDate) " +
-                "values " + $" ('{taskCombo.Text}', '{assignedCombo.Text}', '{frequencyCombo.Text}', '{startDate.Text}' , '{endDate.Text}')");
-            Cleaning.Cleaning.addCleaningData();
+              "values " + $" ('{taskCombo.Text}', '{assignedCombo.Text}', '{frequencyCombo.Text}', '{Convert.ToDateTime(startDate.Text)}' , '{Convert.ToDateTime(endDate.Text)}')");
+            Cleaning.Cleaning.CleaningObject newTask = new Cleaning.Cleaning.CleaningObject(taskCombo.Text, assignedCombo.Text, frequencyCombo.Text, Convert.ToDateTime(startDate.Text), Convert.ToDateTime(endDate.Text));
+            Cleaning.Cleaning.addCleaningData(newTask);
             this.Close();
         }
 
