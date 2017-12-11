@@ -46,34 +46,39 @@ namespace CSC578.Maintenance
         private void ButtonOK_Click(object sender, RoutedEventArgs e)
         {
             Debug.Write("EditEquipmentForm ButtonOK_Click");
-            if (EId.Text != "")
+
+
+            try
             {
-                int id = Int32.Parse(EId.Text);
-                int warrantyMonths = Int32.Parse(EWarranty.Text);
-                equipmentControl.ModifyItem(new EquipmentData(id,
-                                                   EName.Text,
-                                                   EDate.SelectedDate.Value.Date,
-                                                   warrantyMonths));
-            }
-            else
-            {
-                try
+                int? id = null;
+                if (EId.Text != "")
+                    id = Int32.Parse(EId.Text);
+
+                var equipmentData = new EquipmentData(id,
+                                                 EName.Text,
+                                                 EDate.SelectedDate.Value.Date,
+                                                 Int32.Parse(EWarranty.Text));
+
+                equipmentData.Validate();
+
+                if(id == null)
                 {
-                    var equipmentData = new EquipmentData(null,
-                                             EName.Text,
-                                             EDate.SelectedDate.Value.Date,
-                                             Int32.Parse(EWarranty.Text));
-                    equipmentData.Validate();
                     equipmentControl.AddItem(equipmentData);
                 }
-                catch (Exception exception)
+                else
                 {
-                    MessageBox.Show("Invalid Input");
-                    TraceMessage("Invalid Input: " + exception.Message);
-                    return;
+                    equipmentControl.ModifyItem(equipmentData);
                 }
+
+                this.Close();
             }
-            this.Close();
+            catch (Exception exception)
+            {
+                MessageBox.Show("Invalid Input");
+                TraceMessage("Invalid Input: " + exception.Message);
+                return;
+            }
+                                  
         }
 
         public void TraceMessage(string message,
@@ -83,8 +88,7 @@ namespace CSC578.Maintenance
         {
             System.Diagnostics.Trace.WriteLine("message: " + message);
             System.Diagnostics.Trace.WriteLine("member name: " + memberName);
-            System.Diagnostics.Trace.WriteLine("source file path: " + sourceFilePath);
-            System.Diagnostics.Trace.WriteLine("source line number: " + sourceLineNumber);
+            System.Diagnostics.Trace.WriteLine("file: " + sourceFilePath + ": " + sourceLineNumber);
         }
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
