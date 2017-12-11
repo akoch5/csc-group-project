@@ -76,7 +76,6 @@ namespace CSC578.Maintenance
             {
                 MessageBox.Show("Invalid Input");
                 TraceMessage("Invalid Input: " + exception.Message);
-                return;
             }
                                   
         }

@@ -40,46 +40,53 @@ namespace CSC578.Maintenance
             Debug.Write("EditMaintenanceForm");
             this._equipmentMaintenance = equipmentMaintenance;
             this._availableEquipmentList = availableEquipmentList;
-            M_Name.ItemsSource = _availableEquipmentList;
+            
             if (data.Id != null)
             {
                 MId.Text = data.Id.ToString();
                 M_LastMaintenace.SelectedDate = data.LastMaintenance;
                 M_LastMaintenace.DisplayDateStart = data.LastMaintenance;
                 M_Task.Text = data.MaintanceItem;
-                if(availableEquipmentList.Count == 0)
-                {
-                    throw new NotImplementedException();
-                }
+                M_Name.SelectedIndex = data.EquipmentID -1;
                 M_Frequency.Text = data.Frequency.ToString();
             }
+            M_Name.ItemsSource = _availableEquipmentList;
         }
 
         private void ButtonOK_Click(object sender, RoutedEventArgs e)
         {
             Debug.Write("EditMaintenanceForm ButtonOK_Click");
-            if (MId.Text != "")
+
+            try
             {
-                _equipmentMaintenance.
-                    ModifyItem(new MaintenanceData(Int32.Parse(MId.Text),
-                                                   _equipmentMaintenance.EquipmentNameToId((string)M_Name.SelectedValue),
-                                                   (string)M_Name.SelectedValue,
-                                                   M_Task.Text,
-                                                   M_LastMaintenace.SelectedDate.Value.Date,
-                                                   Int32.Parse(M_Frequency.Text)));
-                                                   
-                                            
+                int? id = null;
+                if (MId.Text != "")
+                    id = Int32.Parse(MId.Text);
+
+                var maintenanceData = new MaintenanceData(id,
+                                                      _equipmentMaintenance.EquipmentNameToId((string)M_Name.SelectedValue),
+                                                      (string)M_Name.SelectedValue,
+                                                      M_Task.Text,
+                                                      M_LastMaintenace.SelectedDate.Value.Date,
+                                                      Int32.Parse(M_Frequency.Text));
+
+                maintenanceData.Validate();
+
+                if (id == null)
+                {
+                    _equipmentMaintenance.AddItem(maintenanceData);
+                }
+                else
+                {
+                    _equipmentMaintenance.ModifyItem(maintenanceData);
+                }
+                this.Close();
             }
-            else
+            catch (Exception)
             {
-                _equipmentMaintenance.AddItem(new MaintenanceData(null,
-                                                   _equipmentMaintenance.EquipmentNameToId((string)M_Name.SelectedValue),
-                                                   (string)M_Name.SelectedValue,
-                                                   M_Task.Text,
-                                                   M_LastMaintenace.SelectedDate.Value.Date,
-                                                   Int32.Parse(M_Frequency.Text)));
+                MessageBox.Show("Invalid Input");
             }
-            this.Close();
+
         }
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
