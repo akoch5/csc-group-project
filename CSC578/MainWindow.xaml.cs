@@ -31,27 +31,35 @@ namespace CSC578
         public MainWindow()
         {
             InitializeComponent();
-            con = new OleDbConnection();
-            //Need to change the Data Source to match wherever the DB is stored on local machine.
-            // In final version, should check to see if DB exists in a specific folder. If not, create folder and add DB to make it consistent across all machines. 
-            con.ConnectionString = ConfigurationManager.ConnectionStrings["CSC578.Properties.Settings.DatabaseConnectionString"].ToString();
-
-
+            
         }
 
 
 
         //Enter SQL command as paramter to edit DB. 
-        public static void editDB(String command)
+       // public static void editDB(String command)
+       // {
+           // OleDbCommand cmd = new OleDbCommand();
+         //   if (con.State != ConnectionState.Open)
+           //     con.Open();
+           // cmd.Connection = con;
+           //// cmd.CommandText = command;
+          //  cmd.ExecuteNonQuery();
+          //  con.Close();
+
+       // }
+
+            public static OleDbCommand dbConnect()
         {
+            con = new OleDbConnection();
+            con.ConnectionString = ConfigurationManager.
+                        ConnectionStrings["CSC578.Properties.Settings.DatabaseConnectionString"].
+                            ToString();
             OleDbCommand cmd = new OleDbCommand();
             if (con.State != ConnectionState.Open)
                 con.Open();
             cmd.Connection = con;
-            cmd.CommandText = command;
-            cmd.ExecuteNonQuery();
-            con.Close();
-
+            return cmd;
         }
 
 

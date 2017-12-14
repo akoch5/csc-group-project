@@ -1,21 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 using System.Data.OleDb;
 using System.Data;
-
-
-
+using System.Configuration;
 
 namespace CSC578
 {
@@ -45,24 +31,35 @@ namespace CSC578
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            string data = ((System.Data.DataRowView)taskGrid.SelectedItem).Row.ItemArray[0].ToString();
-            MainWindow.editDB("delete from cleaningList where taskName = (\"" + data + "\");");
-            populateTaskList();
+            if (taskGrid.SelectedItem != null)
+            {
+                string data = ((System.Data.DataRowView)taskGrid.SelectedItem).Row.ItemArray[0].ToString();
+                OleDbCommand cmd = MainWindow.dbConnect();
+                cmd.CommandText = "delete from cleaningList where taskName = @data";
+                cmd.Parameters.Add(new OleDbParameter("@data", data));
+
+                cmd.ExecuteNonQuery();
+                MainWindow.con.Close();
+
+                populateTaskList();
+            }
         }
 
        private void btnAddOK_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.editDB("insert into cleaningList (taskName) values (\"" + newTasktxt.Text + "\");");
+            OleDbCommand cmd = MainWindow.dbConnect();
+            cmd.CommandText = "insert into cleaningList (taskName) values (@task)";
+            cmd.Parameters.Add(new OleDbParameter("@task", newTasktxt.Text));
+            cmd.ExecuteNonQuery();
+            MainWindow.con.Close();
+
             populateTaskList();
             addGrid.Visibility = System.Windows.Visibility.Hidden;
         }
 
         public void populateTaskList()
         {
-            OleDbCommand cmd = new OleDbCommand();
-            if (MainWindow.con.State != ConnectionState.Open)
-                MainWindow.con.Open();
-            cmd.Connection = MainWindow.con;
+            OleDbCommand cmd = MainWindow.dbConnect();
             cmd.CommandText = "select taskName from cleaningList";
             OleDbDataAdapter da = new OleDbDataAdapter(cmd);
             MainWindow.dt = new DataTable();

@@ -9,7 +9,7 @@
     <Grid>
         <Label x:Name="label" Content="ADD CLEANING TASK" Margin="75,15,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="155" FontWeight="Bold"/>
         <Label x:Name="label1" Content="Task" HorizontalAlignment="Left" Margin="18,50,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label1_Copy" Content="Frequency" HorizontalAlignment="Left" Margin="5,81,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1_Copy" Content="Frequency" HorizontalAlignment="Left" Margin="5,83,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label1_Copy1" Content="Start Date" HorizontalAlignment="Left" Margin="8,119,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
             <Label.RenderTransform>
                 <TransformGroup>
@@ -21,14 +21,13 @@
             </Label.RenderTransform>
         </Label>
         <Label x:Name="label1_Copy2" Content="End Date" HorizontalAlignment="Left" Margin="12,151,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label1_Copy3" Content="Assigned To" HorizontalAlignment="Left" Margin="7,199,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="taskCombo" HorizontalAlignment="Left" Height="17" Margin="85,51,0,0" VerticalAlignment="Top" Width="130" ItemsSource ="{Binding}"/>
-        <ComboBox x:Name="frequencyCombo" HorizontalAlignment="Left" Height="17" Margin="85,87,0,0" VerticalAlignment="Top" Width="130"/>
-        <ComboBox x:Name="assignedCombo" HorizontalAlignment="Left" Height="17" Margin="90,204,0,0" VerticalAlignment="Top" Width="130" ItemsSource ="{Binding}"/>
+        <Label x:Name="label1_Copy3" Content="Assigned To" HorizontalAlignment="Left" Margin="7,195,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="taskCombo" HorizontalAlignment="Left" Height="24" Margin="85,51,0,0" VerticalAlignment="Top" Width="130" ItemsSource ="{Binding}" SelectionChanged="taskCombo_SelectionChanged"/>
+        <ComboBox x:Name="frequencyCombo" HorizontalAlignment="Left" Height="24" Margin="85,87,0,0" VerticalAlignment="Top" Width="130"/>
+        <ComboBox x:Name="assignedCombo" HorizontalAlignment="Left" Height="24" Margin="90,196,0,0" VerticalAlignment="Top" Width="130" ItemsSource ="{Binding}"/>
         <Button x:Name="btnOK" Content="OK" HorizontalAlignment="Left" Margin="95,237,0,0" VerticalAlignment="Top" Width="75" Click="btnOK_Click"/>
-        <RadioButton x:Name="indefiniteRdo" Content="Indefinite" HorizontalAlignment="Left" Margin="84,182,0,0" VerticalAlignment="Top"/>
-        <DatePicker Name ="startDate" HorizontalAlignment="Left" Margin="85,119,0,0" VerticalAlignment="Top"/>
-        <DatePicker Name ="endDate" HorizontalAlignment="Left" Margin="85,151,0,0" VerticalAlignment="Top"/>
+        <DatePicker Name ="startDate" HorizontalAlignment="Left" Margin="85,119,0,0" VerticalAlignment="Top" SelectedDateChanged="startDate_SelectedDateChanged"/>
+        <DatePicker Name ="endDate" HorizontalAlignment="Left" Margin="85,151,0,0" VerticalAlignment="Top" SelectedDateChanged="endDate_SelectedDateChanged"/>
 
 
     </Grid>

@@ -1,18 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 using System.Data.OleDb;
 using System.Data;
+using System.Configuration;
 
 namespace CSC578
 {
@@ -39,24 +28,41 @@ namespace CSC578
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            string data = ((System.Data.DataRowView)employeeGrid.SelectedItem).Row.ItemArray[0].ToString();
-            MainWindow.editDB("delete from employeeList where initials = (\"" + data + "\");");
-            populateTaskList();
+            if (employeeGrid.SelectedItem != null)
+            {
+                string data = ((System.Data.DataRowView)employeeGrid.SelectedItem).Row.ItemArray[0].ToString();
+                OleDbCommand cmd = MainWindow.dbConnect();
+                cmd.CommandText = "delete from employeeList where initials = @data";
+                cmd.Parameters.Add(new OleDbParameter("@data", data));
+                cmd.ExecuteNonQuery();
+                MainWindow.con.Close();
+                populateTaskList();
+            }
         }
 
         private void btnAddOK_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.editDB("insert into employeeList (initials) values (\"" + newEmployeetxt.Text + "\");");
-            populateTaskList();
-            addGrid.Visibility = System.Windows.Visibility.Hidden;
+            if (newEmployeetxt.Text.Length != 2)
+            {
+                MessageBoxResult invalidDate = MessageBox.Show("Please Enter a Two-Letter Initial");
+                newEmployeetxt.Text = "";
+            }
+
+            else
+            {
+                OleDbCommand cmd = MainWindow.dbConnect();
+                cmd.CommandText = "insert into employeeList (initials) values (@init)";
+                cmd.Parameters.Add(new OleDbParameter("@init", newEmployeetxt.Text));
+                cmd.ExecuteNonQuery();
+                MainWindow.con.Close();
+                populateTaskList();
+                addGrid.Visibility = System.Windows.Visibility.Hidden;
+            }
         }
 
         public void populateTaskList()
         {
-            OleDbCommand cmd = new OleDbCommand();
-            if (MainWindow.con.State != ConnectionState.Open)
-                MainWindow.con.Open();
-            cmd.Connection = MainWindow.con;
+            OleDbCommand cmd = MainWindow.dbConnect();
             cmd.CommandText = "select initials from employeeList";
             OleDbDataAdapter da = new OleDbDataAdapter(cmd);
             MainWindow.dt = new DataTable();
